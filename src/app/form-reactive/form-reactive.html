@@ -1,0 +1,82 @@
+<!-- <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+  <input formControlName="firstName" placeholder="First Name">
+  @if (regForm.get('firstName')?.invalid && regForm.get('firstName')?.touched) {
+    <div class="error">กรุณากรอกชื่อ</div>
+  }
+
+  <input formControlName="lastName" placeholder="Last Name">
+  @if (regForm.get('lastName')?.invalid && regForm.get('lastName')?.touched) {
+    <div class="error">กรุณากรอกนามสกุล</div>
+  }
+
+  <input formControlName="username" placeholder="Username">
+  @if (regForm.get('username')?.invalid && regForm.get('username')?.touched) {
+    <div class="error">กรุณากรอก Username</div>
+  }
+
+  <input formControlName="password" type="password" placeholder="Password">
+  @if (regForm.get('password')?.touched) {
+    @if (regForm.get('password')?.hasError('required')) {
+      <div class="error">กรุณากรอกรหัสผ่าน</div>
+    } @else if (regForm.get('password')?.hasError('minlength')) {
+      <div class="error">รหัสผ่านต้องยาวอย่างน้อย 8 ตัวอักษร</div>
+    }
+  }
+
+  <button type="submit" [disabled]="regForm.invalid">Register</button>
+</form> -->
+<div class="container mt-4">
+  <div class="card shadow-sm border-success">
+    <div class="card-header bg-success text-white">
+      <h5 class="mb-0">ลงทะเบียน (Reactive Form)</h5>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="regForm" (ngSubmit)="onSubmit()" novalidate>
+        
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">ชื่อ</label>
+            <input formControlName="firstName" class="form-control" 
+                   [class.is-invalid]="regForm.get('firstName')?.invalid && regForm.get('firstName')?.touched">
+            @if (regForm.get('firstName')?.invalid && regForm.get('firstName')?.touched) {
+              <div class="invalid-feedback">กรุณากรอกชื่อ</div>
+            }
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">นามสกุล</label>
+            <input formControlName="lastName" class="form-control" 
+                   [class.is-invalid]="regForm.get('lastName')?.invalid && regForm.get('lastName')?.touched">
+            @if (regForm.get('lastName')?.invalid && regForm.get('lastName')?.touched) {
+              <div class="invalid-feedback">กรุณากรอกนามสกุล</div>
+            }
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <input formControlName="username" class="form-control" 
+                 [class.is-invalid]="regForm.get('username')?.invalid && regForm.get('username')?.touched">
+          @if (regForm.get('username')?.invalid && regForm.get('username')?.touched) {
+            <div class="invalid-feedback">กรุณากรอก Username</div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">รหัสผ่าน</label>
+          <input formControlName="password" type="password" class="form-control" 
+                 [class.is-invalid]="regForm.get('password')?.invalid && regForm.get('password')?.touched">
+          @if (regForm.get('password')?.touched) {
+            @if (regForm.get('password')?.hasError('required')) {
+              <div class="invalid-feedback">กรุณากรอกรหัสผ่าน</div>
+            } @else if (regForm.get('password')?.hasError('minlength')) {
+              <div class="invalid-feedback">รหัสผ่านต้องยาวอย่างน้อย 8 ตัวอักษร</div>
+            }
+          }
+        </div>
+
+        <button type="submit" class="btn btn-success w-100" [disabled]="regForm.invalid">ลงทะเบียน</button>
+      </form>
+    </div>
+  </div>
+</div>

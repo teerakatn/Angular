@@ -1,0 +1,5 @@
+<div class="progress-container" [style.height]="height" (click)="updateProgress(progress)">
+    <div class="progress-fill" [style.width.%]="progress" [style.background]="color">
+        <span class="progress-label" *ngIf="showLabel">{{progress}}%</span>
+    </div>
+</div>

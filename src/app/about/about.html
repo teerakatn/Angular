@@ -1,0 +1,14 @@
+<div class="about">
+    <h2>About Page</h2>
+    <p> 
+        <img (click)="alerrtImageInfo()" src="images/about-image.png" alt="aboutImageInfo()" [width]="size" [height]="size*0.8" >
+    </p>
+    <p>This is the about section, separate from the home
+        content.</p>
+    <hr>
+    <footer>
+        <p>&copy; {{ copyrightYear }} My First Angular App</p>
+        <pre>{{ displayContactInfo() }}</pre>
+        <pre>{{ copyrightYear-initialYear}} year(s) ago</pre>
+    </footer>
+</div>

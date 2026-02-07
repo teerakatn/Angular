@@ -1,0 +1,29 @@
+<h2>เลือกชนิดรูปทรง</h2>
+<label>
+  <input type="radio" name="shape" (change)="selectedShape.set('circle')"> วงกลม
+</label>
+<label>
+  <input type="radio" name="shape" (change)="selectedShape.set('triangle')"> สามเหลี่ยม
+</label>
+
+@switch (selectedShape()) {
+  @case ('circle') {
+    <div>
+      <label for="radius">รัศมี: </label>
+      <input id="radius" type="number" (input)="updateRadius($event)">
+      <p>พื้นที่วงกลม: {{ circleArea() }}</p>
+    </div>
+  }
+  @case ('triangle') {
+    <div>
+      <label for="base">ฐาน: </label>
+      <input id="base" type="number" (input)="updateBase($event)">
+      <label for="height">ความสูง: </label>
+      <input id="height" type="number" (input)="updateHeight($event)">
+      <p>พื้นที่สามเหลี่ยม: {{ triangleArea() }}</p>
+    </div>
+  }
+  @default {
+    <p>กรุณาเลือกชนิดรูปทรง</p>
+  }
+}

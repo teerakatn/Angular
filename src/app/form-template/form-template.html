@@ -1,0 +1,82 @@
+<!-- <form #regForm="ngForm" (ngSubmit)="onSubmit()">
+  <input name="firstName" [(ngModel)]="user.firstName" #fName="ngModel" required placeholder="First Name">
+  @if (fName.invalid && fName.touched) {
+    <div class="error">กรุณากรอกชื่อ</div>
+  }
+
+  <input name="lastName" [(ngModel)]="user.lastName" #lName="ngModel" required placeholder="Last Name">
+  @if (lName.invalid && lName.touched) {
+    <div class="error">กรุณากรอกนามสกุล</div>
+  }
+
+  <input name="username" [(ngModel)]="user.username" #uName="ngModel" required placeholder="Username">
+  @if (uName.invalid && uName.touched) {
+    <div class="error">กรุณากรอก Username</div>
+  }
+
+  <input name="password" type="password" [(ngModel)]="user.password" #pWord="ngModel" required minlength="8" placeholder="Password">
+  @if (pWord.touched) {
+    @if (pWord.errors?.['required']) {
+      <div class="error">กรุณากรอกรหัสผ่าน</div>
+    } @else if (pWord.errors?.['minlength']) {
+      <div class="error">รหัสผ่านต้องยาวอย่างน้อย 8 ตัวอักษร</div>
+    }
+  }
+
+  <button type="submit" [disabled]="regForm.invalid">Register</button>
+</form> -->
+<div class="container mt-4">
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0">ลงทะเบียน (Template-driven)</h5>
+    </div>
+    <div class="card-body">
+      <form #regForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+        
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">ชื่อ</label>
+            <input name="firstName" [(ngModel)]="user.firstName" #fName="ngModel" 
+                   required class="form-control" [class.is-invalid]="fName.invalid && fName.touched">
+            @if (fName.invalid && fName.touched) {
+              <div class="invalid-feedback">กรุณากรอกชื่อ</div>
+            }
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">นามสกุล</label>
+            <input name="lastName" [(ngModel)]="user.lastName" #lName="ngModel" 
+                   required class="form-control" [class.is-invalid]="lName.invalid && lName.touched">
+            @if (lName.invalid && lName.touched) {
+              <div class="invalid-feedback">กรุณากรอกนามสกุล</div>
+            }
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <input name="username" [(ngModel)]="user.username" #uName="ngModel" 
+                 required class="form-control" [class.is-invalid]="uName.invalid && uName.touched">
+          @if (uName.invalid && uName.touched) {
+            <div class="invalid-feedback">กรุณากรอก Username</div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">รหัสผ่าน</label>
+          <input name="password" type="password" [(ngModel)]="user.password" #pWord="ngModel" 
+                 required minlength="8" class="form-control" [class.is-invalid]="pWord.invalid && pWord.touched">
+          @if (pWord.touched) {
+            @if (pWord.errors?.['required']) {
+              <div class="invalid-feedback">กรุณากรอกรหัสผ่าน</div>
+            } @else if (pWord.errors?.['minlength']) {
+              <div class="invalid-feedback">รหัสผ่านต้องยาวอย่างน้อย 8 ตัวอักษร</div>
+            }
+          }
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100" [disabled]="regForm.invalid">ลงทะเบียน</button>
+      </form>
+    </div>
+  </div>
+</div>

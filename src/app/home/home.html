@@ -1,0 +1,47 @@
+<div class="content">
+  <h2>Welcome to Angular Workshop at ICT KU.KPS</h2>
+  <hr>
+  <label>
+    <input type="radio" name="shape" [(ngModel)]="selectedShape" value="circle"> วงกลม
+  </label>
+  <label>
+    <input type="radio" name="shape" [(ngModel)]="selectedShape" value="triangle"> สามเหลี่ยม
+  </label>
+
+  @switch (selectedShape) {
+  @case ('circle') {
+    <h3>Circle Calculations</h3>
+    <div>
+      <label for="radius">Radius: </label>
+      <input id="radius" type="number" [(ngModel)]="radius" placeholder="Enter radius">
+      <button (click)="calculateCircleData()">Calculate</button>
+      <button (click)="clearData()">Clear</button>
+    </div>
+    <br>
+    <div>
+      Area: {{ circleArea }}
+    </div>
+    <div>
+      Circumference: {{ circumference }}
+    </div>
+  }
+  @case ('triangle') {
+    <h3>Triangle Calculations</h3>
+    <div>
+      <label for="base">Base: </label>
+      <input id="base" type="number" [(ngModel)]="base" placeholder="Base"><br><br>
+    </div>
+    <div>
+      <label for="height">Height: </label>
+      <input id="height" type="number" [(ngModel)]="height" placeholder="Height">
+    </div>
+    <br>
+    <button (click)="calculateTriangleData()">Calculate</button>
+    <button (click)="clearData()">Clear</button>
+    <p>Area: {{ triangleArea }}</p>
+  } 
+  @default {
+    <p>กรุณาเลือกชนิดรูปทรงที่ต้องการคำนวณ</p>
+  }
+}
+</div>
