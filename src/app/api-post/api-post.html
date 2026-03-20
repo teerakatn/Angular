@@ -27,13 +27,19 @@
         <button type="submit" class="btn btn-success">บันทึกสินค้า</button>
     </form>
 
-    @if (response) {
+    @if (error()) {
+    <div class="alert alert-danger mt-3" role="alert" aria-live="polite">
+        {{ error() }}
+    </div>
+    }
+
+    @if (response()) {
     <div class="alert alert-info mt-3">
         <strong>เพิ่มสินค้าสำเร็จ!</strong><br />
-        ID: {{ response.id }} <br />
-        ชื่อ: {{ response.title }} <br />
-        ราคา: {{ response.price }} <br />
-        หมวดหมู่: {{ response.category }}
+        ID: {{ response()?.id }} <br />
+        ชื่อ: {{ response()?.title }} <br />
+        ราคา: {{ response()?.price }} <br />
+        หมวดหมู่: {{ response()?.category }}
     </div>
     }
 </div>

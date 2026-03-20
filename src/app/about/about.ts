@@ -8,11 +8,11 @@ import { Component } from '@angular/core';
 })
 export class About {
   size=200;
-  initialYear = 2024;
-  copyrightYear = 2025;
-  developerName = 'Prasertsak U.';
+  initialYear = 2025;
+  copyrightYear = 2026;
+  developerName = 'Teerakarn Boonmark';
   address = 'Nakhon Pathom, Thailand';
-  telephone = '081-234-5678';
+  telephone = '081-418-4720';
   displayContactInfo() {
     return 'Developer: ' + this.developerName + '\n' +
            'Address: ' + this.address + '\n' +
@@ -21,7 +21,7 @@ export class About {
   aboutImageInfo() {
     return 'About image - size: ' + this.size + 'x'+(this.size*0.8);
   }
-  alerrtImageInfo() {
+  alertImageInfo() {
     alert(this.aboutImageInfo());
   }
 }

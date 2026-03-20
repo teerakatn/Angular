@@ -6,10 +6,18 @@
 /out-tsc
 /bazel-out
 
+# Build and test artifacts
+/.angular
+/coverage
+/.nyc_output
+*.lcov
+
 # Node
 /node_modules
 npm-debug.log
 yarn-error.log
+pnpm-debug.log
+*.log
 
 # IDEs and editors
 .idea/
@@ -33,11 +41,21 @@ yarn-error.log
 /.angular/cache
 .sass-cache/
 /connect.lock
-/coverage
 /libpeerconnection.log
 testem.log
 /typings
 __screenshots__/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Local OS/editor temp files
+*.tmp
+*.temp
+*.swp
+*.swo
 
 # System files
 .DS_Store

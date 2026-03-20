@@ -1,28 +1,32 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { ProductService, Product } from '../services/product';
+import { FormsModule, NgForm } from '@angular/forms';
+import { ProductService, Product } from '../core/data-access/product.service';
 
 
 @Component({
   selector: 'app-api-post',
   imports: [FormsModule, CommonModule],
   templateUrl: './api-post.html',
-  styleUrl: './api-post.css'
+  styleUrl: './api-post.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ApiPostComponent {
+  private readonly apiService = inject(ProductService);
+
   product: Product = { id: 0, title: '', price: 0, category: '' };
-  response: Product | null = null;
+  response = signal<Product | null>(null);
+  error = signal<string | null>(null);
 
-  constructor(private apiService: ProductService) { }
-
-  onSubmit(form: any) {
+  onSubmit(form: NgForm): void {
     if (form.valid) {
+      this.error.set(null);
       this.apiService.addProduct(this.product).subscribe({
         next: (res: Product) => {
-          this.response = res;
+          this.response.set(res);
         },
         error: (err: unknown) => {
+          this.error.set('เพิ่มสินค้าไม่สำเร็จ กรุณาลองใหม่');
           console.error('Error adding product:', err);
         }
       });

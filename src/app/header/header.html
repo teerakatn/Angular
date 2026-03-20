@@ -1,11 +1,27 @@
-<nav>
-    <a routerLink="/home" routerLinkActive="active">Home</a> |
-    <a routerLink="/student" routerLinkActive="active">Student</a> 
-    <a routerLink="/shape" routerLinkActive="active">Shape</a> 
-    <a routerLink="/form-template" routerLinkActive="active">Form Template</a> 
-    <a routerLink="/form-reactive" routerLinkActive="active">Form Reactive</a> |
-    <a routerLink="/api-get" routerLinkActive="active">API GET</a> 
-    <a routerLink="/api-post" routerLinkActive="active">API POST</a> |
-    <a routerLink="/about" routerLinkActive="active">About</a>
-</nav>
-<hr>
+<header class="site-header">
+    <div class="site-header__bar">
+        <a class="site-header__brand" routerLink="/home" (click)="closeMenu()">Angular Workshop</a>
+
+        <button
+            type="button"
+            class="site-header__toggle"
+            (click)="toggleMenu()"
+            [attr.aria-expanded]="menuOpen()"
+            aria-controls="main-navigation"
+            aria-label="Toggle navigation"
+        >
+            Menu
+        </button>
+    </div>
+
+    <nav id="main-navigation" class="site-header__nav" [class.site-header__nav--open]="menuOpen()" aria-label="Main navigation">
+        <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" #homeLink="routerLinkActive" [attr.aria-current]="homeLink.isActive ? 'page' : null" (click)="closeMenu()">Home</a>
+        <a routerLink="/student" routerLinkActive="active" #studentLink="routerLinkActive" [attr.aria-current]="studentLink.isActive ? 'page' : null" (click)="closeMenu()">Student</a>
+        <a routerLink="/shape" routerLinkActive="active" #shapeLink="routerLinkActive" [attr.aria-current]="shapeLink.isActive ? 'page' : null" (click)="closeMenu()">Shape</a>
+        <a routerLink="/form-template" routerLinkActive="active" #templateLink="routerLinkActive" [attr.aria-current]="templateLink.isActive ? 'page' : null" (click)="closeMenu()">Form Template</a>
+        <a routerLink="/form-reactive" routerLinkActive="active" #reactiveLink="routerLinkActive" [attr.aria-current]="reactiveLink.isActive ? 'page' : null" (click)="closeMenu()">Form Reactive</a>
+        <a routerLink="/api-get" routerLinkActive="active" #apiGetLink="routerLinkActive" [attr.aria-current]="apiGetLink.isActive ? 'page' : null" (click)="closeMenu()">API GET</a>
+        <a routerLink="/api-post" routerLinkActive="active" #apiPostLink="routerLinkActive" [attr.aria-current]="apiPostLink.isActive ? 'page' : null" (click)="closeMenu()">API POST</a>
+        <a routerLink="/about" routerLinkActive="active" #aboutLink="routerLinkActive" [attr.aria-current]="aboutLink.isActive ? 'page' : null" (click)="closeMenu()">About</a>
+    </nav>
+</header>
